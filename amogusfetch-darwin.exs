@@ -89,7 +89,7 @@ defmodule AmogusFetchDarwin do
     sysctl("kern.osversion")
   end
 
-  def mem() do
+  defp mem() do
     {output, 0} = System.cmd("vm_stat", [])
     active_pages =
       Regex.run(~r/Pages active:\s+(\d+)/, output, capture: :all_but_first)
